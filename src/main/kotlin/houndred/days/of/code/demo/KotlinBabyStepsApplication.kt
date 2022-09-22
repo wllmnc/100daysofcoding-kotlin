@@ -7,6 +7,5 @@ import org.springframework.boot.runApplication
 class KotlinBabyStepsApplication
 
 fun main(args: Array<String>) {
-	println("Hello, World!")
 	runApplication<KotlinBabyStepsApplication>(*args)
 }
