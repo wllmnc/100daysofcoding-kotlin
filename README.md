@@ -1,4 +1,4 @@
-# 100daysofconding-kotlin
+# 100daysofcoding-kotlin
 
 # Run Project
 In a terminal, type `gradle BootRun` and then enter.
