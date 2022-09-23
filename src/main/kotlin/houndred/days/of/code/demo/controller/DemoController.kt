@@ -1,17 +1,24 @@
 package houndred.days.of.code.demo.controller
 
-import houndred.days.of.code.demo.control.DummyResponse
+import houndred.days.of.code.demo.entity.DemoEntity
+import houndred.days.of.code.demo.service.DemoService
 import io.swagger.annotations.Api
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @Api
-class DemoController {
+class DemoController( @Autowired val service: DemoService) {
 
-    @GetMapping("/dummy/{id}")
-    fun insertId(@PathVariable id: String): DummyResponse? {
-        return DummyResponse(id, java.time.Instant.now())
+    @GetMapping("/save/{id}")
+    fun saveId(@PathVariable id: String): Boolean? {
+        return service.saveDemoEntity(id)
+    }
+
+    @GetMapping("/getAll")
+    fun getAll(): Iterable<DemoEntity> {
+        return service.getAll()
     }
 }
