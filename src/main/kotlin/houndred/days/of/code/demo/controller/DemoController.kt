@@ -17,6 +17,11 @@ class DemoController( @Autowired val service: DemoService) {
         return service.saveDemoEntity(id)
     }
 
+    @GetMapping("/get/{id}")
+    fun get(@PathVariable id: String): DemoEntity? {
+        return service.findById(id)
+    }
+
     @GetMapping("/getAll")
     fun getAll(): Iterable<DemoEntity> {
         return service.getAll()
