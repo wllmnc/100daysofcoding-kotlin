@@ -22,6 +22,11 @@ class DemoController( @Autowired val service: DemoService) {
         return service.findById(id)
     }
 
+    @GetMapping("/remove/{id}")
+    fun remove(@PathVariable id: String): DemoEntity? {
+        return service.removeDemoEntity(id)
+    }
+
     @GetMapping("/getAll")
     fun getAll(): Iterable<DemoEntity> {
         return service.getAll()
