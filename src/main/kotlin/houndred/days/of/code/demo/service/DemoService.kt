@@ -9,16 +9,24 @@ import org.springframework.stereotype.Service
 class DemoService  @Autowired constructor(private val repository: DemoRepository) {
 
     fun findById(id: String): DemoEntity? {
-        return repository.findById(id);
+        return repository.findById(id)
     }
 
     fun getAll(): Iterable<DemoEntity> {
-        return repository.findAll();
+        return repository.findAll()
+    }
+
+    fun removeDemoEntity(id: String): DemoEntity? {
+        val demoItemToRemove = repository.findById(id)
+        if (demoItemToRemove != null) {
+            repository.delete(demoItemToRemove)
+        }
+        return demoItemToRemove
     }
 
     fun saveDemoEntity(id: String): Boolean {
         repository.save(DemoEntity(id, java.time.Instant.now()))
-        return true;
+        return true
     }
 
 }
