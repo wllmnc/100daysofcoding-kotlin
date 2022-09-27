@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RestController
 class DemoController( @Autowired val service: DemoService) {
 
     @GetMapping("/save/{id}")
-    fun saveId(@PathVariable id: String): Boolean? {
+    fun saveId(@PathVariable id: String): DemoEntity {
         return service.saveDemoEntity(id)
     }
 
     @GetMapping("/get/{id}")
-    fun get(@PathVariable id: String): DemoEntity? {
+    fun get(@PathVariable id: String): DemoEntity {
         return service.findById(id)
     }
 
     @GetMapping("/remove/{id}")
-    fun remove(@PathVariable id: String): DemoEntity? {
+    fun remove(@PathVariable id: String): DemoEntity {
         return service.removeDemoEntity(id)
     }
 
