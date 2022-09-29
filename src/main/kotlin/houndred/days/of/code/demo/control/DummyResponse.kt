@@ -1,8 +1,6 @@
 package houndred.days.of.code.demo.control
 
-import java.time.Instant
-
-class DummyResponse(id: String, time: Instant) {
+class DummyResponse(id: String, eventTime: String) {
     val id = id
-    val timeStamp = time.toString();
+    val eventTime = eventTime.toString();
 }
