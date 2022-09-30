@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 class KotlinBabyStepsApplicationTests @Autowired constructor(private val mockMvc: MockMvc) {
 
 	val saveURL: String = "/save/"
+	val getURL: String = "/get/"
 	val mapper = jacksonObjectMapper()
 
 	@Test
@@ -27,7 +28,7 @@ class KotlinBabyStepsApplicationTests @Autowired constructor(private val mockMvc
 
 	@Test
 	fun saveTest() {
-		val saveId: String = "demoId"
+		val saveId = "demoId"
 		val result: MvcResult = mockMvc.perform(MockMvcRequestBuilders.get(saveURL + saveId).contentType(MediaType.APPLICATION_JSON))
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON)).andReturn()
 
@@ -36,4 +37,11 @@ class KotlinBabyStepsApplicationTests @Autowired constructor(private val mockMvc
 		Assertions.assertEquals(saveId, dummyResponse.id)
 	}
 
+	@Test
+	fun getTestWithNoData() {
+		val saveId = "demoId"
+		val result: MvcResult = mockMvc.perform(MockMvcRequestBuilders.get(getURL + saveId).contentType(MediaType.APPLICATION_JSON))
+				.andReturn()
+		Assertions.assertEquals(404, result.response.status)
+	}
 }
